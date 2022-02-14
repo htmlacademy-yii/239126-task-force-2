@@ -1,7 +1,7 @@
 # Личный проект «TaskForce»
 
-* Студент: [Endless Hatred](https://up.htmlacademy.ru/yii/2/user/239126).
-* Наставник: `Неизвестно`.
+- Студент: [Endless Hatred](https://up.htmlacademy.ru/yii/2/user/239126).
+- Наставник: [Сергей Парфенов](https://htmlacademy.ru/profile/id926645).
 
 ---
 
