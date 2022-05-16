@@ -1,0 +1,29 @@
+{
+  "name": "spook/task_force_2",
+  "description": "HTML Academy's project number 2",
+  "type": "project",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Spook\\TaskForce2\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "spook-work",
+      "email": "hersgori4@protonmail.com"
+    }
+  ],
+  "require": {},
+  "scripts": {
+    "test": "./vendor/bin/phpunit tests --colors --bootstrap=src/init-test.php"
+  }
+}
