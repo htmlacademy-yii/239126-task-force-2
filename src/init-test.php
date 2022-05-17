@@ -1,6 +1,7 @@
 <?php
 
-$upOneDir = dirname(__DIR__ );
-require_once $upOneDir . "/vendor/autoload.php";
+$vendorDir = dirname(__DIR__) . "/vendor/autoload.php";
+
+require_once $vendorDir;
 
 require_once "src/Task.php";
