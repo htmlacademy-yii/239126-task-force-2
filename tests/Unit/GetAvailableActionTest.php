@@ -15,7 +15,7 @@ class GetAvailableActionTest extends TestCase
         $this->assertEquals([Task::ACTION_BEGIN, Task::ACTION_CANCEL], $res1->getAvailableActions(1));
 
         // currentUsedId - исполнитель, статус заданий новый
-        $this->assertEquals([Task::ACTION_RESPOND], $res1->getAvailableActions(2));
+        $this->assertEquals([Task::ACTION_RESPOND], $res1->getAvailableActions(10));
 
         $res2 = new Task(1, 2, Task::STATUS_WORK_IN_PROGRESS);
 
@@ -23,6 +23,6 @@ class GetAvailableActionTest extends TestCase
         $this->assertEquals([Task::ACTION_FINISHED], $res2->getAvailableActions(1));
 
         // currentUserId - исполнитель, статус задания в процессе
-        $this->assertEquals([Task::ACTION_CANCEL], $res2->getAvailableActions(2));
+        $this->assertEquals([Task::ACTION_DENIED], $res2->getAvailableActions(2));
     }
 }
