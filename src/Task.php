@@ -108,13 +108,15 @@ namespace TaskForce2 {
                 }
             }
 
-            if ($currentUserId === $this->executorId) {
+            if ($currentUserId !== $this->executorId && $currentUserId !== $this->customerId) {
                 if ($this->status === self::STATUS_NEW) {
                     return [self::ACTION_RESPOND];
                 }
+            }
 
+            if ($currentUserId === $this->executorId) {
                 if ($this->status === self::STATUS_WORK_IN_PROGRESS) {
-                    return [self::ACTION_CANCEL];
+                    return [self::ACTION_DENIED];
                 }
             }
 
