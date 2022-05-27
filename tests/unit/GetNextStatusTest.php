@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce2\Task;
+use TaskForce\models\Task;
 
 class GetNextStatusTest extends TestCase
 {
-    public function testGetNextStatus()
+    public function testGetNextStatus(): void
     {
         $res = new Task(customerId: 1, executorId: 2);
 
