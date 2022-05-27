@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce2\Task;
+use TaskForce\Task;
 
 class GetAvailableActionTest extends TestCase
 {
