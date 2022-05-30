@@ -10,7 +10,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Spook\\TaskForce2\\": "src/"
+      "TaskForce\\": "src/"
     }
   },
   "autoload-dev": {

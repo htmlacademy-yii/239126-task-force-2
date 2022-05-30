@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce2\Task;
+use TaskForce\models\Task;
 
 class GetAvailableActionTest extends TestCase
 {
-    public function testGetAvailableAction()
+    public function testGetAvailableAction(): void
     {
         $res1 = new Task(customerId: 1, executorId: 2);
 

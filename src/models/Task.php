@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-    /**
-     * Модель задачи проекта
-     */
+namespace TaskForce\models;
+
+/**
+ * Модель задачи проекта
+ */
 class Task
 {
     public const STATUS_NEW = 1;
