@@ -7,7 +7,8 @@ namespace TaskForce\models;
 /**
  * Модель задачи проекта
  */
-class Task {
+class Task
+{
     public const STATUS_NEW = 1;
     public const STATUS_CANCELLED = 2;
     public const STATUS_WORK_IN_PROGRESS = 3;
