@@ -1,3 +1,6 @@
+![PHP CI](https://github.com/NoSpooksAllowed/239126-task-force-2/actions/workflows/workflow.yml/badge.svg)
+
+
 # Личный проект «TaskForce»
 
 - Студент: [Endless Hatred](https://up.htmlacademy.ru/yii/2/user/239126).
