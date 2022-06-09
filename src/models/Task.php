@@ -65,7 +65,7 @@ class Task
 
     /**
      * Метод возвращает массив имен на русском всех статусов
-     * @return array
+     * @return array<int, string>
      */
     public function getStatusesList(): array
     {
@@ -74,7 +74,7 @@ class Task
 
     /**
      * Метод возвращает массив имен на русском всех действий
-     * @return array
+     * @return array<int, string>
      */
     public function getActionsList(): array
     {
@@ -95,7 +95,7 @@ class Task
      * Метод принимает id текущего пользователя и возвращает массив возможных действий в
      * завсимости от роли пользователя
      * @param int $currentUserId
-     * @return array
+     * @return array<int>
      */
     public function getAvailableActions(int $currentUserId): array
     {
