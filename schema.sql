@@ -10,13 +10,13 @@ CREATE TABLE IF NOT EXISTS users
   name              VARCHAR(128) NOT NULL,
   email             VARCHAR(255) NOT NULL,
   password          VARCHAR(60)  NOT NULL,
-  registration_time DATETIME     NOT NULL,
+  creation_time DATETIME     NOT NULL,
   phone             VARCHAR(20),
   telegram          VARCHAR(128),
-  date_of_birth     DATE,
+  birthday     DATE,
   about             TEXT,
   city_id           INT UNSIGNED NOT NULL,
-  user_pic_path     VARCHAR(255) DEFAULT '',
+  avatar_file_id    INT UNSIGNED,
   UNIQUE KEY unique_email (email),
   UNIQUE KEY unique_phone (phone),
   UNIQUE KEY unique_telegram (telegram)
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS reviews
 (
   id            INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   description   VARCHAR(255)    NOT NULL,
-  creation_date DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  grade         INT(6) UNSIGNED NOT NULL,
+  creation_time DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  grade         TINYINT UNSIGNED NOT NULL,
   task_id       INT UNSIGNED    NOT NULL
 );
 
@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS categories
 
 CREATE TABLE IF NOT EXISTS users_categories
 (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   user_id     INT UNSIGNED NOT NULL,
   category_id INT UNSIGNED NOT NULL
 );
@@ -69,7 +70,7 @@ CREATE TABLE IF NOT EXISTS files
 (
   id        INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   path      VARCHAR(500) NOT NULL,
-  mime_type INT UNSIGNED NOT NULL DEFAULT 1
+  mime_type VARCHAR(255) NOT NULL DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS tasks_files
@@ -84,15 +85,17 @@ CREATE TABLE IF NOT EXISTS responses
   id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   message       VARCHAR(255),
   price         DECIMAL(10, 2) NOT NULL,
-  creation_date DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  creation_time DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
   task_id       INT UNSIGNED   NOT NULL,
-  user_id       INT UNSIGNED   NOT NULL
+  user_id       INT UNSIGNED   NOT NULL,
+  is_declined   BOOLEAN NOT NULL
 );
 
 ALTER TABLE users
   ADD
     (
-    FOREIGN KEY (city_id) REFERENCES cities (id)
+    FOREIGN KEY (city_id) REFERENCES cities (id),
+    FOREIGN KEY (avatar_file_id) REFERENCES files(id)
     );
 
 ALTER TABLE reviews
