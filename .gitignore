@@ -7,3 +7,7 @@
 *.sublime*
 Thumbs.db
 vendor
+*.swo
+*.swp
+*.cache
+build
