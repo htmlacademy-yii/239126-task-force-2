@@ -23,10 +23,10 @@ abstract class AbstractAction
 
     /**
      * Метод проверки прав
-     * @param int $executorId
-     * @param int $currentUserId
-     * @param int $customerId
+     * @param int $executorId -- id исполнителя задания
+     * @param int $customerId -- id заказчика задания
+     * @param int $activeId -- id текущего пользователя
      * @return bool
      */
-    abstract public static function checkPermission(int $executorId, int $currentUserId, int $customerId): bool;
+    abstract public static function checkPermission(int $executorId, int $customerId, int $activeId): bool;
 }
