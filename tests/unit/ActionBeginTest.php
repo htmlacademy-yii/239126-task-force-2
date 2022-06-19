@@ -7,7 +7,7 @@ use TaskForce\models\ActionBegin;
 
 class ActionBeginTest extends TestCase
 {
-    public function testGetActionBegin(): void
+    public function testActionBegin(): void
     {
         $this->assertEquals("Начать задание", ActionBegin::getActionName());
         $this->assertEquals(1, ActionBegin::getActionStatus());
