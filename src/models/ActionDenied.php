@@ -35,6 +35,6 @@ class ActionDenied extends AbstractAction
      */
     public static function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $customerId === $activeId;
+        return $executorId !== $customerId && $customerId === $activeId;
     }
 }

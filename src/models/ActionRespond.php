@@ -35,6 +35,6 @@ class ActionRespond extends AbstractAction
      */
     public static function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $executorId === $activeId;
+        return $customerId !== $executorId && $executorId === $activeId;
     }
 }

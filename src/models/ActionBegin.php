@@ -35,6 +35,6 @@ class ActionBegin extends AbstractAction
      */
     public static function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $executorId === $activeId;
+        return $executorId !== $customerId && $executorId === $activeId;
     }
 }
