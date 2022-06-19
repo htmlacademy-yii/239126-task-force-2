@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TaskForce\models;
 
-use TaskForce\models\AbstractAction;
-
 class ActionCancel extends AbstractAction
 {
     /**
@@ -28,6 +26,8 @@ class ActionCancel extends AbstractAction
 
     /**
      * Метод проверки прав
+     * Возвращает true в случае если текущий пользователь
+     * является исполнителем задания
      * @param int $executorId -- id исполнителя задания
      * @param int $customerId -- id заказчика задания
      * @param int $activeId -- id текущего пользователя

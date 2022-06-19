@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TaskForce\models;
 
-use TaskForce\models\AbstractAction;
-
 class ActionFinished extends AbstractAction
 {
     /**

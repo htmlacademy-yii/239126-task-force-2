@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TaskForce\models;
 
-use TaskForce\models\AbstractAction;
-
 class ActionBegin extends AbstractAction
 {
     /**
@@ -28,6 +26,8 @@ class ActionBegin extends AbstractAction
 
     /**
      * Метод проверки прав
+     * Возвращает true если текущий пользователь
+     * является исполнителем задания
      * @param int $executorId -- id исполнителя задания
      * @param int $customerId -- id заказчика задания
      * @param int $activeId -- id текущего пользователя
@@ -35,6 +35,6 @@ class ActionBegin extends AbstractAction
      */
     public static function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $customerId === $activeId;
+        return $executorId === $activeId;
     }
 }
