@@ -13,5 +13,6 @@ class ActionBeginTest extends TestCase
         $this->assertEquals(1, ActionBegin::getActionStatus());
         $this->assertEquals(true, ActionBegin::checkPermission(1, 2, 1));
         $this->assertEquals(false, ActionBegin::checkPermission(1, 2, 2));
+        $this->assertEquals(false, ActionBegin::checkPermission(1, 1, 2));
     }
 }
