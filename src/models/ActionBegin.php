@@ -21,7 +21,7 @@ class ActionBegin extends AbstractAction
      * @param int $activeId -- id текущего пользователя
      * @return bool
      */
-    public static function checkPermission(int $executorId, int $customerId, int $activeId): bool
+    public function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
         return $executorId !== $customerId && $executorId === $activeId;
     }

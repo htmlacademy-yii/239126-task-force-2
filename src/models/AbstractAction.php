@@ -37,5 +37,5 @@ abstract class AbstractAction
      * @param int $activeId -- id текущего пользователя
      * @return bool
      */
-    abstract public static function checkPermission(int $executorId, int $customerId, int $activeId): bool;
+    abstract public function checkPermission(int $executorId, int $customerId, int $activeId): bool;
 }
