@@ -12,12 +12,6 @@ abstract class AbstractAction
     protected string $name;
     protected int $code;
 
-    public function __construct(string $name_, int $code_)
-    {
-        $this->name = $name_;
-        $this->code = $code_;
-    }
-
     /**
      * Возвращает название действия
      * @return string
