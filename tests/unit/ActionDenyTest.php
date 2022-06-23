@@ -3,13 +3,13 @@
 namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionDenied;
+use TaskForce\models\ActionDeny;
 
-class ActionDeniedTest extends TestCase
+class ActionDenyTest extends TestCase
 {
     public function testActionDenied(): void
     {
-        $actionDeny = new ActionDenied();
+        $actionDeny = new ActionDeny();
 
         $this->assertEquals("Отказаться", $actionDeny->getActionName());
         $this->assertEquals(5, $actionDeny->getActionStatus());

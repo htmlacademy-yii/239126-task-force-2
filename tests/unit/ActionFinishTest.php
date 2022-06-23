@@ -3,13 +3,13 @@
 namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionFinished;
+use TaskForce\models\ActionFinish;
 
-class ActionFinishedTest extends TestCase
+class ActionFinishTest extends TestCase
 {
     public function testActionFinished(): void
     {
-        $actionFinish = new ActionFinished();
+        $actionFinish = new ActionFinish();
 
         $this->assertEquals("Выполнено", $actionFinish->getActionName());
         $this->assertEquals(4, $actionFinish->getActionStatus());
