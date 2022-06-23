@@ -9,17 +9,26 @@ namespace TaskForce\models;
  */
 abstract class AbstractAction
 {
+    protected string $name;
+    protected int $code;
+
     /**
      * Возвращает название действия
      * @return string
      */
-    abstract public static function getActionName(): string;
+    public function getActionName(): string
+    {
+        return $this->name;
+    }
 
     /**
      * Возвращает статус код действия
      * @return int
      */
-    abstract public static function getActionStatus(): int;
+    public function getActionStatus(): int
+    {
+        return $this->code;
+    }
 
     /**
      * Метод проверки прав
