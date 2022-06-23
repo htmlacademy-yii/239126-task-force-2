@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace TaskForce\models;
 
-class ActionFinished extends AbstractAction
+class ActionDeny extends AbstractAction
 {
     public function __construct()
     {
-        $this->name = "Выполнено";
-        $this->code = 4;
+        $this->name = "Отказаться";
+        $this->code = 5;
     }
 
     /**
