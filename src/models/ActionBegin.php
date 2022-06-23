@@ -6,22 +6,10 @@ namespace TaskForce\models;
 
 class ActionBegin extends AbstractAction
 {
-    /**
-     * Возвращает название действия
-     * @return string
-     */
-    public static function getActionName(): string
+    public function __construct()
     {
-        return "Начать задание";
-    }
-
-    /**
-     * Возвращает статус код действия
-     * @return int
-     */
-    public static function getActionStatus(): int
-    {
-        return 1;
+        $this->name = "Начать задание";
+        $this->code = 1;
     }
 
     /**

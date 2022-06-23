@@ -6,22 +6,10 @@ namespace TaskForce\models;
 
 class ActionDenied extends AbstractAction
 {
-    /**
-     * Возвращает название действия
-     * @return string
-     */
-    public static function getActionName(): string
+    public function __construct()
     {
-        return "Отказаться";
-    }
-
-    /**
-     * Возвращает статус код действия
-     * @return int
-     */
-    public static function getActionStatus(): int
-    {
-        return 5;
+        $this->name = "Отказаться";
+        $this->code = 5;
     }
 
     /**

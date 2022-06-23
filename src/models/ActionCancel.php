@@ -6,22 +6,10 @@ namespace TaskForce\models;
 
 class ActionCancel extends AbstractAction
 {
-    /**
-     * Возвращает название действия
-     * @return string
-     */
-    public static function getActionName(): string
+    public function __construct()
     {
-        return "Отменить";
-    }
-
-    /**
-     * Возвращает статус код действия
-     * @return int
-     */
-    public static function getActionStatus(): int
-    {
-        return 2;
+        $this->name = "Отменить";
+        $this->code = 2;
     }
 
     /**

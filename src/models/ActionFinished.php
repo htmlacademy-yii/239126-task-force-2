@@ -6,22 +6,10 @@ namespace TaskForce\models;
 
 class ActionFinished extends AbstractAction
 {
-    /**
-     * Возвращает название действия
-     * @return string
-     */
-    public static function getActionName(): string
+    public function __construct()
     {
-        return "Выполнено";
-    }
-
-    /**
-     * Возвращает статус код действия
-     * @return int
-     */
-    public static function getActionStatus(): int
-    {
-        return 4;
+        $this->name = "Выполнено";
+        $this->code = 4;
     }
 
     /**
