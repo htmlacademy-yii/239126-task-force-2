@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\unit;
+namespace Tests\unit\actions;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionFinish;
+use TaskForce\models\actions\ActionFinish;
 
 class ActionFinishTest extends TestCase
 {

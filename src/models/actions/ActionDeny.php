@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace TaskForce\models;
+namespace TaskForce\models\actions;
 
-class ActionCancel extends AbstractAction
+class ActionDeny extends AbstractAction
 {
     public function __construct()
     {
-        $this->name = "Отменить";
-        $this->code = 2;
+        $this->name = "Отказаться";
+        $this->code = 5;
     }
 
     /**
      * Метод проверки прав
      * Возвращает true в случае если текущий пользователь
-     * является исполнителем задания
+     * является заказчиком задания
      * @param int $executorId -- id исполнителя задания
      * @param int $customerId -- id заказчика задания
      * @param int $activeId -- id текущего пользователя
@@ -23,6 +23,6 @@ class ActionCancel extends AbstractAction
      */
     public function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $executorId !== $customerId && $executorId === $activeId;
+        return $executorId !== $customerId && $customerId === $activeId;
     }
 }

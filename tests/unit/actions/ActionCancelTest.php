@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\unit;
+namespace Tests\unit\actions;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionCancel;
+use TaskForce\models\actions\ActionCancel;
 
 class ActionCancelTest extends TestCase
 {

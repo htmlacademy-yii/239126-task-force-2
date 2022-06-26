@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace TaskForce\models;
+namespace TaskForce\models\actions;
 
-class ActionRespond extends AbstractAction
+class ActionFinish extends AbstractAction
 {
     public function __construct()
     {
-        $this->name = "Откликнуться";
-        $this->code = 3;
+        $this->name = "Выполнено";
+        $this->code = 4;
     }
 
     /**
      * Метод проверки прав
-     * Возвращает true если текущий пользователь
-     * является исполнителем задания
+     * Возвращает true в случае если текущий пользователь
+     * является заказчиком задания
      * @param int $executorId -- id исполнителя задания
      * @param int $customerId -- id заказчика задания
      * @param int $activeId -- id текущего пользователя
@@ -23,6 +23,6 @@ class ActionRespond extends AbstractAction
      */
     public function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $customerId !== $executorId && $executorId === $activeId;
+        return $executorId !== $customerId && $customerId === $activeId;
     }
 }

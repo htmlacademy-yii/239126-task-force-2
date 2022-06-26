@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\unit;
+namespace Tests\unit\actions;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionDeny;
+use TaskForce\models\actions\ActionDeny;
 
 class ActionDenyTest extends TestCase
 {
