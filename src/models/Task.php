@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace TaskForce\models;
 
-use TaskForce\exceptions\TaskForceBaseException;
+use TaskForce\exceptions\TaskInvalidActionException;
+use TaskForce\exceptions\TaskInvalidStatusException;
+use TaskForce\exceptions\TaskExecutorException;
 
 /**
  * Модель задачи проекта
@@ -27,7 +29,13 @@ class Task
         self::STATUS_NEW,
         self::STATUS_CANCELLED,
         self::STATUS_WORK_IN_PROGRESS,
-        self::ACTION_FINISHED,
+        self::STATUS_FINISHED,
+        self::STATUS_FAILED
+    ];
+
+    private const STATUSES_WITH_EXECUTOR = [
+        self::STATUS_WORK_IN_PROGRESS,
+        self::STATUS_FINISHED,
         self::STATUS_FAILED
     ];
 
@@ -56,25 +64,31 @@ class Task
     ];
     private int $status;
     private int $customerId;
-    private int $executorId;
+    private ?int $executorId;
 
     /**
     * Конструктор класса Task принимат $customerId - айди заказчика, $executorId - айди исполнителя
     * $status - по дефолту устанавливается как STATUS_NEW
     * @param int $customerId
-    * @param int $executorId
+    * @param int|null $executorId
     * @param int $status
     * @return void
     *
-    * @throws TaskForceBaseException базовое исключение проекта
+    * @throws TaskInvalidStatusException исключение для неверного статуса
+    * @throws TaskExecutorException исключение для статусов в работе, провалена и завершена,
+    * когда в конструктор исполнитель передан как null
     */
-    public function __construct(int $customerId, int $executorId, int $status = self::STATUS_NEW)
+    public function __construct(int $customerId, ?int $executorId = null, int $status = self::STATUS_NEW)
     {
         $this->customerId = $customerId;
         $this->executorId = $executorId;
 
         if (!in_array($status, self::STATUSES)) {
-            throw new TaskForceBaseException("Неверный статус");
+            throw new TaskInvalidStatusException("Неверный статус");
+        }
+
+        if ($executorId === null && in_array($status, self::STATUSES_WITH_EXECUTOR)) {
+            throw new TaskExecutorException("Для данного статуса обязательно нужен исполнитель");
         }
 
         $this->status = $status;
@@ -103,12 +117,13 @@ class Task
      * @param int $action
      * @return int
      *
-     * @throws TaskForceBaseException базовое исключение проекта
+     * @throws TaskInvalidActionException исключение срабатывает при передачи несуществующего
+     * действия в метод
      */
     public function getNextStatus(int $action): int
     {
         if (!array_key_exists($action, self::ACTION_STATUS_MAP)) {
-            throw new TaskForceBaseException("Неверный статус");
+            throw new TaskInvalidActionException("Неверное действие");
         }
 
         return self::ACTION_STATUS_MAP[$action];
