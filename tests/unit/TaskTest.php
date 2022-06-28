@@ -3,7 +3,9 @@
 namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\exceptions\TaskForceBaseException;
+use TaskForce\exceptions\TaskExecutorException;
+use TaskForce\exceptions\TaskInvalidActionException;
+use TaskForce\exceptions\TaskInvalidStatusException;
 use TaskForce\models\Task;
 
 class TaskTest extends TestCase
@@ -18,7 +20,7 @@ class TaskTest extends TestCase
 
             // currentUsedId - исполнитель, статус заданий новый
             $this->assertEquals([Task::ACTION_RESPOND], $res1->getAvailableActions(10));
-        } catch (TaskForceBaseException $e) {
+        } catch (TaskInvalidStatusException | TaskExecutorException $e) {
             $this->fail($e->getMessage());
         }
 
@@ -30,7 +32,7 @@ class TaskTest extends TestCase
 
             // currentUserId - исполнитель, статус задания в процессе
             $this->assertEquals([Task::ACTION_DENIED], $res2->getAvailableActions(2));
-        } catch (TaskForceBaseException $e) {
+        } catch (TaskInvalidStatusException | TaskExecutorException $e) {
             $this->fail($e->getMessage());
         }
     }
@@ -40,8 +42,19 @@ class TaskTest extends TestCase
         try {
             new Task(customerId: 1, executorId: 2, status: 10);
             $this->fail("TaskForceBaseException was not thrown");
-        } catch (TaskForceBaseException $e) {
+        } catch (TaskInvalidStatusException $e) {
             $this->assertEquals("Неверный статус", $e->getMessage());
+        } catch (TaskExecutorException $e) {
+            $this->fail($e->getMessage());
+        }
+
+        try {
+            new Task(customerId: 1, executorId: null, status: 3);
+            $this->fail("TaskExecutorException was not thrown");
+        } catch (TaskExecutorException $e) {
+            $this->assertEquals("Для данного статуса обязательно нужен исполнитель", $e->getMessage());
+        } catch (TaskInvalidStatusException $e) {
+            $this->fail($e->getMessage());
         }
     }
 
@@ -55,7 +68,7 @@ class TaskTest extends TestCase
             $this->assertEquals(Task::STATUS_NEW, $res->getNextStatus(Task::ACTION_RESPOND));
             $this->assertEquals(Task::STATUS_FINISHED, $res->getNextStatus(Task::ACTION_FINISHED));
             $this->assertEquals(Task::STATUS_FAILED, $res->getNextStatus(Task::ACTION_DENIED));
-        } catch (TaskForceBaseException $e) {
+        } catch (TaskInvalidActionException | TaskInvalidStatusException | TaskExecutorException $e) {
             $this->fail($e->getMessage());
         }
     }
@@ -65,9 +78,11 @@ class TaskTest extends TestCase
         try {
             $res = new Task(customerId: 1, executorId: 2);
             $res->getNextStatus(15);
-            $this->fail("TaskForceBaseException was not thrown");
-        } catch (TaskForceBaseException $e) {
-            $this->assertEquals("Неверный статус", $e->getMessage());
+            $this->fail("TaskInvalidActionException was not thrown");
+        } catch (TaskInvalidActionException $e) {
+            $this->assertEquals("Неверное действие", $e->getMessage());
+        } catch (TaskInvalidStatusException | TaskExecutorException $e) { // unexpected exception in this unit test
+            $this->fail($e->getMessage());
         }
     }
 }
