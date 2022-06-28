@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace TaskForce\exceptions;
 
-class TaskForceBaseException extends \Exception
+use Exception;
+
+class TaskInvalidActionException extends Exception
 {
 }
