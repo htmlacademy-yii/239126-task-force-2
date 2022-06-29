@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskForce\models;
+namespace TaskForce\models\actions;
 
 /**
  * Абстрактный класс для действий

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TaskForce\models;
+namespace TaskForce\models\actions;
 
-class ActionBegin extends AbstractAction
+class ActionRespond extends AbstractAction
 {
     public function __construct()
     {
-        $this->name = "Начать задание";
-        $this->code = 1;
+        $this->name = "Откликнуться";
+        $this->code = 3;
     }
 
     /**
@@ -23,6 +23,6 @@ class ActionBegin extends AbstractAction
      */
     public function checkPermission(int $executorId, int $customerId, int $activeId): bool
     {
-        return $executorId !== $customerId && $executorId === $activeId;
+        return $customerId !== $executorId && $executorId === $activeId;
     }
 }

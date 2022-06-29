@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\unit;
+namespace Tests\unit\actions;
 
 use PHPUnit\Framework\TestCase;
-use TaskForce\models\ActionBegin;
+use TaskForce\models\actions\ActionBegin;
 
 class ActionBeginTest extends TestCase
 {
