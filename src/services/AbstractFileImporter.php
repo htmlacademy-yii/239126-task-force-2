@@ -70,7 +70,9 @@ abstract class AbstractFileImporter
         }
 
         foreach ($this->getNextLIne() as $line) {
-            $this->result[] = $line;
+            if ($line !== null) {
+                $this->result[] = $line;
+            }
         }
 
         return $this->result;
@@ -93,6 +95,7 @@ abstract class AbstractFileImporter
      */
     private function getNextLIne(): iterable
     {
+        $this->fileObject->setFlags(SplFileObject::SKIP_EMPTY);
         while (!$this->fileObject->eof()) {
             yield $this->fileObject->fgetcsv($this->separator);
         }
