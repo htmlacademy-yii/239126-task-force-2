@@ -10,7 +10,6 @@ use TaskForce\exceptions\DatabaseStmtException;
 
 class CategoriesImporter extends AbstractFileImporter
 {
-
     public function saveCsvToDatabase(mysqli $con): void
     {
         $data = $this->import();
