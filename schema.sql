@@ -49,8 +49,7 @@ CREATE TABLE IF NOT EXISTS cities
 (
   id       INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   name     VARCHAR(128) NOT NULL,
-  position POINT        NOT NULL SRID 0,
-  UNIQUE unique_name (name)
+  position POINT        NOT NULL SRID 0
 );
 
 CREATE TABLE IF NOT EXISTS categories
