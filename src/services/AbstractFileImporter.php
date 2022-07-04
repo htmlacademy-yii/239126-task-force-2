@@ -28,13 +28,14 @@ abstract class AbstractFileImporter
 
     /**
      * AbstractFileImporter constructor.
+     * Дефолтным разделителем является запятая
      * @param string $filename
      * @param array<string> $columns
      * @param string $separator
      * @throws SourceFileException
      * @throws FileFormatException
      */
-    public function __construct(string $filename, array $columns, string $separator)
+    public function __construct(string $filename, array $columns, string $separator = ",")
     {
         $this->filename = $filename;
         $this->columns = $columns;
