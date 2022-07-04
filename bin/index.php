@@ -14,6 +14,7 @@ print_r($res1->getActionsList());
 print_r($res1->getStatusesList());
 
 $config = require_once "config.php";
+
 $con = Database::connect($config["db"]);
 
 $res2 = new CategoriesImporter("data/categories.csv", ["name", "icon"], ",");
