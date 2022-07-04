@@ -53,7 +53,7 @@ abstract class AbstractFileImporter
      * @throws FileFormatException
      * @throws SourceFileException
      */
-    public function import(): array
+    protected function import(): array
     {
         if (!$this->validateColumns($this->columns)) {
             throw new FileFormatException("Заданы неверно загаловки столбцов");
@@ -82,7 +82,7 @@ abstract class AbstractFileImporter
      * Возвращает данные о заголовках в csv файле
      * @return array<string|mixed>|null|bool
      */
-    public function getHeaderData(): array|null|bool
+    protected function getHeaderData(): array|null|bool
     {
         $this->fileObject->rewind();
         return $this->fileObject->fgetcsv();
