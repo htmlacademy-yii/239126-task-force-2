@@ -13,3 +13,4 @@ vendor
 build
 config.php
 config-test.php
+schema-test.sql
