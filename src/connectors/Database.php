@@ -38,7 +38,7 @@ abstract class Database
      *
      * @param mysqli $con Ресурс соединения
      * @param string $sql SQL запрос с плейсхолдерами вместо значений
-     * @param array $data Данные для вставки на место плейсхолдеров
+     * @param array<mixed|string> $data Данные для вставки на место плейсхолдеров
      *
      * @return mysqli_stmt Подготовленное выражение
      * @throws DatabaseStmtException при работе с подготовленным выражением
