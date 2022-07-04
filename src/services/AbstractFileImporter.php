@@ -59,9 +59,6 @@ abstract class AbstractFileImporter
             throw new FileFormatException("Заданы неверно загаловки столбцов");
         }
 
-        if (!file_exists($this->filename)) {
-            throw new SourceFileException("Файл не существует");
-        }
 
         $headerData = $this->getHeaderData();
 
