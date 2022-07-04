@@ -12,5 +12,5 @@ vendor
 *.cache
 build
 config.php
-config-test.php
+tests/config-test.php
 schema-test.sql
