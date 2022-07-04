@@ -12,3 +12,4 @@ vendor
 *.cache
 build
 config.php
+config-test.php
