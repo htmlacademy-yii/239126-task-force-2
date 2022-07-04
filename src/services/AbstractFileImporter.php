@@ -32,6 +32,7 @@ abstract class AbstractFileImporter
      * @param array<string> $columns
      * @param string $separator
      * @throws SourceFileException
+     * @throws FileFormatException
      */
     public function __construct(string $filename, array $columns, string $separator)
     {
@@ -44,28 +45,24 @@ abstract class AbstractFileImporter
         } catch (RuntimeException $e) {
             throw new SourceFileException($e->getMessage());
         }
-    }
 
-    /**
-     * Импортиурет данный из csv файла в массив.
-     * @return array<string|mixed>
-     *
-     * @throws FileFormatException
-     * @throws SourceFileException
-     */
-    protected function import(): array
-    {
         if (!$this->validateColumns($this->columns)) {
             throw new FileFormatException("Заданы неверно загаловки столбцов");
         }
-
 
         $headerData = $this->getHeaderData();
 
         if ($headerData !== $this->columns) {
             throw new FileFormatException("Исходный файл не содержит необходимых столбцов");
         }
+    }
 
+    /**
+     * Импортиурет данный из csv файла в массив.
+     * @return array<string|mixed>
+     */
+    protected function import(): array
+    {
         foreach ($this->getNextLIne() as $line) {
             if ($line !== null) {
                 $this->result[] = $line;
