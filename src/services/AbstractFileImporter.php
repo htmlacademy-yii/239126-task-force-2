@@ -64,7 +64,7 @@ abstract class AbstractFileImporter
      */
     protected function import(): array
     {
-        foreach ($this->getNextLIne() as $line) {
+        foreach ($this->getNextLine() as $line) {
             if ($line !== null) {
                 $this->result[] = $line;
             }
@@ -88,7 +88,7 @@ abstract class AbstractFileImporter
      * порцию данных из таблицы
      * @return iterable<string|mixed>
      */
-    private function getNextLIne(): iterable
+    private function getNextLine(): iterable
     {
         $this->fileObject->setFlags(SplFileObject::SKIP_EMPTY);
         while (!$this->fileObject->eof()) {
@@ -105,16 +105,15 @@ abstract class AbstractFileImporter
      */
     private function validateColumns(array $columns): bool
     {
-        if (count($columns)) {
-            foreach ($columns as $column) {
-                if (!is_string($column)) {
-                    return false;
-                }
-            }
-        } else {
+        if (count($columns) === 0) {
             return false;
         }
 
+        foreach ($columns as $column) {
+            if (!is_string($column)) {
+                 return false;
+            }
+        }
         return true;
     }
 

@@ -13,12 +13,12 @@ print_r($res1->getActionsList());
 
 print_r($res1->getStatusesList());
 
-$config = require_once "config.php";
+$config = require_once __DIR__ . "config.php";
 
 $con = Database::connect($config["db"]);
 
-$res2 = new CategoriesImporter("data/categories.csv", ["name", "icon"], ",");
+$res2 = new CategoriesImporter(__DIR__ . "data/categories.csv", ["name", "icon"], ",");
 
-$res3 = new CitiesImporter("data/cities-point.csv", ["name", "point"], ";");
+$res3 = new CitiesImporter(__DIR__ . "data/cities-point.csv", ["name", "point"], ";");
 
 $res3->saveCsvToDatabase($con);
