@@ -11,3 +11,6 @@ vendor
 *.swp
 *.cache
 build
+config.php
+tests/config-test.php
+schema-test.sql

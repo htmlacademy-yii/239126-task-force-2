@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS cities
 (
   id       INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   name     VARCHAR(128) NOT NULL,
-  position POINT        NOT NULL SRID 0,
-  UNIQUE unique_name (name)
+  position POINT        NOT NULL SRID 0
 );
 
 CREATE TABLE IF NOT EXISTS categories
 (
   id   INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(128) NOT NULL
+  name VARCHAR(128) NOT NULL,
+  file_id INT UNSIGNED
 );
 
 CREATE TABLE IF NOT EXISTS users_categories
@@ -132,4 +132,10 @@ ALTER TABLE responses
     (
     FOREIGN KEY (task_id) REFERENCES tasks (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
+    );
+
+ALTER TABLE categories
+  ADD
+    (
+    FOREIGN KEY (file_id) REFERENCES files (id)
     );
