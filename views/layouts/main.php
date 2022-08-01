@@ -20,8 +20,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->registerCsrfMetaTags() ?>
     <title>Taskforce</title>
+    <?php // $this->head() ?>
     <link rel="stylesheet" href="css/style.css">
-    <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
