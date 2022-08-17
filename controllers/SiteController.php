@@ -65,9 +65,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $city = Cities::findOne(1);
+        $city = Cities::findOne(2);
 
-        $user = Users::findOne(2);
+        if (!$city) {
+            $long = 55.67;
+            $lat = 37.26;
+            $city = new Cities();
+            $city->name = "Одинцово";
+            $city->position = new \yii\db\Expression("PointFromText(:point)", [
+            ':point' => 'POINT(' . $long . ' ' . $lat . ')'
+            ]);
+        }
+
+        $user = Users::findOne(1);
 
         if (!$user) {
             $user = new Users();
@@ -83,7 +93,7 @@ class SiteController extends Controller
         }
 
         if ($user) {
-            var_dump($user);
+            var_dump($city);
         }
 
         // return $this->render('index');
