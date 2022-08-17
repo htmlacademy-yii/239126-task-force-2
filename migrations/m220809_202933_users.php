@@ -17,7 +17,7 @@ class m220809_202933_users extends Migration
             "name" => $this->string(128)->notNull(),
             "email" => $this->string(255)->notNull()->unique(),
             "password" => $this->string(60)->notNull(),
-            "creation_time" => $this->dateTime()->notNull(),
+            "creation_time" => $this->dateTime()->notNull()->defaultExpression("CURRENT_TIMESTAMP"),
             "phone" => $this->string(20)->unique(),
             "telegram" => $this->string(128)->unique(),
             "birthday" => $this->date(),
