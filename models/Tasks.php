@@ -26,7 +26,7 @@ use Yii;
  * @property TasksFiles[] $tasksFiles
  * @property Users $worker
  */
-class Task extends \yii\db\ActiveRecord
+class Tasks extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

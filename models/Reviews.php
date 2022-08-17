@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Tasks $task
  */
-class Review extends \yii\db\ActiveRecord
+class Reviews extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

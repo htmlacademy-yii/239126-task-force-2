@@ -18,7 +18,7 @@ use Yii;
  * @property Tasks $task
  * @property Users $user
  */
-class Response extends \yii\db\ActiveRecord
+class Responses extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

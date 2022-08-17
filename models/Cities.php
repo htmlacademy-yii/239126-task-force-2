@@ -14,7 +14,7 @@ use Yii;
  * @property Tasks[] $tasks
  * @property Users[] $users
  */
-class Citiy extends \yii\db\ActiveRecord
+class Cities extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

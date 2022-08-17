@@ -14,7 +14,7 @@ use Yii;
  * @property Categories $category
  * @property Users $user
  */
-class ClientCategory extends \yii\db\ActiveRecord
+class UsersCategories extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

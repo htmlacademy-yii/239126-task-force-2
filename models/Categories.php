@@ -15,7 +15,7 @@ use Yii;
  * @property Tasks[] $tasks
  * @property UsersCategories[] $usersCategories
  */
-class Category extends \yii\db\ActiveRecord
+class Categories extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
