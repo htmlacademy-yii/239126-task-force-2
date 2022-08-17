@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Cities;
+use app\models\City;
+use app\models\Users;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,6 +12,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Client;
 
 class SiteController extends Controller
 {
@@ -61,7 +65,28 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $city = Cities::findOne(1);
+
+        $user = Users::findOne(2);
+
+        if (!$user) {
+            $user = new Users();
+            $user->name = "Василий";
+            $user->email = "vasily@mail.ru";
+            $user->password = "12345678";
+            $user->phone = "+78005553535";
+            $user->telegram = "@user";
+            $user->birthday = "20.12.2002";
+            $user->about = "Я весёлый человек :)";
+
+            $user->link("city", $city);
+        }
+
+        if ($user) {
+            var_dump($user);
+        }
+
+        // return $this->render('index');
     }
 
     /**
