@@ -1,5 +1,6 @@
 <?php
 
+use TaskForce\services\CategoriesImporter;
 use yii\db\Migration;
 
 /**
@@ -10,9 +11,27 @@ class m220824_140729_categories_files_insertion extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeUp()
+    public function safeUp(): void
     {
+        try {
+            $importer = new CategoriesImporter(__DIR__ . "/../data/categories.csv", ["name", "icon"], ",");
+        } catch (Exception $e) {
+            print($e->getMessage());
+            exit(-1);
+        }
 
+        $data = $importer->import();
+
+        foreach ($data as $row) {
+            $this->insert("files", [
+                "path" => $row[1]
+            ]);
+
+            $this->insert("categories", [
+                "name" => $row[0],
+                "file_id" => Yii::$app->db->getLastInsertID()
+            ]);
+        }
     }
 
     /**
@@ -20,23 +39,5 @@ class m220824_140729_categories_files_insertion extends Migration
      */
     public function safeDown()
     {
-        echo "m220824_140729_categories_files_insertion cannot be reverted.\n";
-
-        return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m220824_140729_categories_files_insertion cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
