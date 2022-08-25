@@ -34,7 +34,7 @@ $config = [
                 'class' => 'yii\faker\FixtureController',
                 'templatePath' => '@app/fixtures/templates',
                 'fixtureDataPath' => '@app/fixtures/data',
-                'namespace' => 'fixtures',
+                'namespace' => 'app\fixtures',
             ],
         ],
 ];
