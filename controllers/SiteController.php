@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Cities;
 use app\models\City;
+use app\models\Tasks;
 use app\models\Users;
 use Yii;
 use yii\filters\AccessControl;
@@ -65,38 +66,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $city = Cities::findOne(2);
-
-        if (!$city) {
-            $long = 55.67;
-            $lat = 37.26;
-            $city = new Cities();
-            $city->name = "Одинцово";
-            $city->position = new \yii\db\Expression("PointFromText(:point)", [
-            ':point' => 'POINT(' . $long . ' ' . $lat . ')'
-            ]);
-        }
-
-        $user = Users::findOne(1);
-
-        if (!$user) {
-            $user = new Users();
-            $user->name = "Василий";
-            $user->email = "vasily@mail.ru";
-            $user->password = "12345678";
-            $user->phone = "+78005553535";
-            $user->telegram = "@user";
-            $user->birthday = "20.12.2002";
-            $user->about = "Я весёлый человек :)";
-
-            $user->link("city", $city);
-        }
-
-        if ($user) {
-            var_dump($city);
-        }
-
-        // return $this->render('index');
+        return $this->render('index');
     }
 
     /**
