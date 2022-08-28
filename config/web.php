@@ -42,6 +42,7 @@ $config = [
                 ],
             ],
         ],
+
         'db' => $db,
         /*
         'urlManager' => [

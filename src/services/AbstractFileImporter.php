@@ -62,7 +62,7 @@ abstract class AbstractFileImporter
      * Импортиурет данный из csv файла в массив.
      * @return array<string|mixed>
      */
-    protected function import(): array
+    public function import(): array
     {
         foreach ($this->getNextLine() as $line) {
             if ($line !== null) {
