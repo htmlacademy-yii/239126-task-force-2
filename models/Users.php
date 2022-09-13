@@ -25,6 +25,9 @@ use Yii;
  * @property Tasks[] $tasks
  * @property Tasks[] $tasks0
  * @property UsersCategories[] $usersCategories
+ * @property string $USER [char(32)]
+ * @property int $CURRENT_CONNECTIONS [bigint]
+ * @property int $TOTAL_CONNECTIONS [bigint]
  */
 class Users extends \yii\db\ActiveRecord
 {
