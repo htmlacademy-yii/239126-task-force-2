@@ -28,7 +28,7 @@ class SearchTaskForm extends Model
         return [
             "categories" => "Категории",
             "hoursInterval" => "Период",
-            "withoutExecutor" => "Без заказчика"
+            "withoutExecutor" => "Без исполнителя"
         ];
     }
 
