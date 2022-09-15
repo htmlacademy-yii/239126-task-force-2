@@ -13,7 +13,9 @@ class TasksController extends Controller
     public function actionIndex()
     {
         $searchTaskFormModel = new SearchTaskForm();
+        $categories = Categories::find()->select("name")->indexBy("id")->column();
 
+        $searchTaskFormModel->categories = $categories;
         if (Yii::$app->request->getIsGet()) {
             $searchTaskFormModel->load(Yii::$app->request->get());
         }
@@ -31,8 +33,6 @@ class TasksController extends Controller
             $tasksQuery->andWhere(["worker_id" => null]);
         }
 
-
-        $categories = Categories::find()->select("name")->column();
         $tasks = $tasksQuery->orderBy(["start_date" => SORT_DESC])->all();
         return $this->render("index", compact("tasks", "searchTaskFormModel", "categories"));
     }
