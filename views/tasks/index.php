@@ -63,7 +63,8 @@ use yii\widgets\ActiveForm;
                    [
                        "class" => "checkbox-wrapper",
                        "itemOptions" => [
-                               "labelOptions" => ["class" => "control-label"],
+                            "labelOptions" => ["class" => "control-label",],
+                           "id" => "check",
                        ]
                    ]
                );
