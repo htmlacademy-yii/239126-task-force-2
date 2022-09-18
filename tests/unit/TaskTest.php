@@ -39,23 +39,11 @@ class TaskTest extends TestCase
 
     public function testExceptionConstructor(): void
     {
-        try {
-            new Task(customerId: 1, executorId: 2, status: 10);
-            $this->fail("TaskForceBaseException was not thrown");
-        } catch (TaskInvalidStatusException $e) {
-            $this->assertEquals("Неверный статус", $e->getMessage());
-        } catch (TaskExecutorException $e) {
-            $this->fail($e->getMessage());
-        }
+        $this->expectException(TaskInvalidStatusException::class);
+        new Task(customerId: 1, executorId: 2, status: 10);
 
-        try {
-            new Task(customerId: 1, executorId: null, status: 3);
-            $this->fail("TaskExecutorException was not thrown");
-        } catch (TaskExecutorException $e) {
-            $this->assertEquals("Для данного статуса обязательно нужен исполнитель", $e->getMessage());
-        } catch (TaskInvalidStatusException $e) {
-            $this->fail($e->getMessage());
-        }
+        $this->expectException(TaskExecutorException::class);
+        new Task(customerId: 1, status: 3);
     }
 
     public function testGetNextStatus(): void

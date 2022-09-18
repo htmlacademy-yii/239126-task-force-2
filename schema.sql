@@ -36,10 +36,11 @@ CREATE TABLE IF NOT EXISTS tasks
   id              INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   name            VARCHAR(128)            NOT NULL,
   description     TEXT                    NOT NULL,
+  status          ENUM('new', 'cancelled', 'work_in_progress', 'finished', 'failed') DEFAULT 'new',
   category_id     INT UNSIGNED            NOT NULL,
   city_id         INT UNSIGNED            NOT NULL,
   price           DECIMAL(10, 2) UNSIGNED NOT NULL,
-  start_date      DATETIME                NOT NULL,
+  start_date      DATETIME                NOT NULL DEFAULT CURRENT_TIMESTAMP,
   expiration_date DATETIME                NOT NULL,
   customer_id     INT UNSIGNED            NOT NULL,
   worker_id       INT UNSIGNED

@@ -11,7 +11,6 @@ return [
     "category_id" => $faker->numberBetween(1, 8),
     "city_id" => $faker->numberBetween(1, 500),
     "price" => $faker->randomNumber(5),
-    "start_date" => $faker->date,
-    "expiration_date" => $faker->date,
+    "expiration_date" => $faker->dateTimeBetween($startDate = "now", $endDate = "+1 years")->format("Y-m-d"),
     "customer_id" => $faker->numberBetween(1, 10)
 ];
